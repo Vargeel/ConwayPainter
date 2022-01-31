@@ -20,6 +20,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:Vargeel/Vargeel.github.io.git main
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:Vargeel/ConwayPainter.git main:gh-pages
+git push -f https://github.com/Vargeel/ConwayPainter.git main:gh-pages
 
 cd -
