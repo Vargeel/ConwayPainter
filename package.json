@@ -1,11 +1,12 @@
 {
   "name": "conways-canvas",
   "version": "0.0.1",
-  "homepage": "https://vargeel.github.io",
+  "homepage": "https://vargeel.github.io/ConwayPainter",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
