@@ -1,7 +1,7 @@
 {
   "name": "conways-canvas",
   "version": "0.0.0",
-  "homepage": "https://Vargeel.github.io",
+  "homepage": "https://vargeel.github.io",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
