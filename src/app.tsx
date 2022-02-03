@@ -5,12 +5,25 @@ const SIZE = 75;
 
 const DEAD = "#ffffff";
 
-
+function hexToRgb(hex: string) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : {r:0,g:0, b:0}
+}
+function componentToHex(c:number) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
 function averageColors(colors: string[]) {
-  const sum = colors.map(color => Number.parseInt(color.slice(1), 16)).reduce((acc, e) => acc + e, 0);
-  const retNum = Math.floor(sum / (colors.length));
-  // TODO: fix color separation for better averaging
-  return "#" + retNum.toString(16).padStart(6, "0");
+  const rgbColors = colors.map(hexToRgb)
+  const reducer = (previousValue:number, currentValue:number) => previousValue + currentValue
+  const newR =  Math.floor(rgbColors.map(c => c?.r).reduce(reducer)/ (colors.length))
+  const newG =  Math.floor(rgbColors.map(c => c?.g).reduce(reducer)/ (colors.length))
+  const newB =  Math.floor(rgbColors.map(c => c?.b).reduce(reducer)/ (colors.length))
+  return "#" + componentToHex(newR) + componentToHex(newG) + componentToHex(newB);
 }
 function averageColorsWrong(colors: string[]) {
   const sum = colors.map(color => Number.parseInt(color.slice(1), 16)).reduce((acc, e) => acc + e, 0);
