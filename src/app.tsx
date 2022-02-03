@@ -4,6 +4,7 @@ import { Menu } from "./menu";
 const SIZE = 75;
 
 const DEAD = "#ffffff";
+//TODO : replace mouseEvents with Pointer for mobile support
 
 function hexToRgb(hex: string) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -89,6 +90,10 @@ export function App() {
       stepConway();
     }
   }, [framerate]);
+
+  const stepperConway = () => {
+    setState(pV => pV.map(conway))
+  }
 
   const stepConway = () => {
     setState(pV => pV.map(conway))
@@ -176,7 +181,7 @@ export function App() {
             setState(pv => pv.map(() => DEAD))
             isRunningRef.current = false;
           }}
-          stepConway={stepConway}
+          stepConway={stepperConway}
           toggleConway={toggleConway}
           framerate={framerate}
           setFramerate={setFramerate}
